@@ -1,9 +1,12 @@
 import React from 'react';
-import {Typography} from '@mui/material/'
+import {AppBar} from '@mui/material/'
+import logo from '../images/logo.jpg'
 
 function Navbar() {
     return (
-        <Typography variant='h1'>hi</Typography>
+        <AppBar sx={{backgroundColor:'#d1aa60', width:'100%', height:'10vh', display:'flex', alignContent:'center'}}>
+            <img src={logo} style={{height:'80%', width:'400px', padding:'10px'}}/>
+        </AppBar>
       );
 }
 
