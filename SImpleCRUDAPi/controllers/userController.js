@@ -1,34 +1,17 @@
+import users from '../Models/user.js'
 
 
-let users = [
-    {
-        name: 'john',
-        age: 30 ,
-        id: 1
-    },
-    {
-        name: 'mark',
-        age: 69,
-        id: 2  
-    },
-    {
-        name: 'sam',
-        age: 43,
-        id: 3 
-    }
-]
 
 export const getUsers = (req, res) => {
-    res.json(users)
+    res.send('we exist')
 }
 
 export const createUser = (req, res) => {
-    const { name, age} = req.body
-   users.push({
-        name: name,
-        age:age
-   })
-   res.json(users)
+    const {name, age} = req.body
+
+    const newUser = new users({name,age})
+    newUser.save().then(data => res.json(data)).catch(err => {res.status(404)})
+
 }
 
 export const getUser= (req, res) => {
