@@ -2,50 +2,56 @@ import users from '../Models/user.js'
 
 
 
-export const getUsers = (req, res) => {
-    res.send('we exist')
+export const getUsers = async (req, res) => {
+    
+    try {
+        const user = await users.find();
+        res.json(user)
+    }catch(err) {
+        res.json({message: err})
+    }
 }
 
-export const createUser = (req, res) => {
+export const createUser = async (req, res) => {
     const {name, age} = req.body
 
     const newUser = new users({name,age})
-    newUser.save().then(data => res.json(data)).catch(err => {res.status(404)})
+    try {
+        const user = await newUser.save()
+        res.json(user)
+    } catch(err) {
+        res.json({message: err})
+    }
 
 }
 
-export const getUser= (req, res) => {
-    const userId = req.params.id
-    const user =  users.find(function(user) {
-        return user.id === Number(userId)
-    })
-
-    res.json(user)
-}
-export const deleteUser = (req, res) => {
-    const userId = req.params.id
-
-    users = users.filter((user) => {
-        return user.id !== Number(userId)
-    })
-
-    res.json(users)
+export const getUser= async (req, res) => {
+    try {
+        const user = await users.findById(req.params.id)
+        res.json(user)
+    } catch(err) {
+        res.json({message: err})
+    }
 
 }
+export const deleteUser = async (req, res) => {
+   
+    try{
+        const deleted = await users.remove({_id: req.params.id})
+        res.json(deleted)
+    }catch(err) {
+        res.json({message: err})
+    }
 
-export const updateUser = (req, res) =>{
-    const userId=  req.params.id
-    const {age, name} = req.body
+}
 
-    users = users.map((user) => {
-        if(user.id === Number(userId)) {
-            return {
-                name,
-                age, 
-                id: user.id
-            }            
-        }
-        return user        
-    })
-    res.json(users)    
+export const updateUser = async (req, res) =>{
+    try {
+        const updatedUser = await users.updateOne({_id: req.params.id}, 
+            {$set: {name: req.body.name, age: req.body.age}})
+            res.json(updatedUser)
+    }
+    catch(err){
+        res.json({message: err})
+    }
 }
