@@ -2,6 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import userRouter from './routes/user.js'
 import mongoose from 'mongoose'
+import cors from 'cors'
 import 'dotenv/config'
 
 const app =  express()
@@ -9,6 +10,7 @@ const app =  express()
 const PORT = 5000
 
 app.use(bodyParser.json())
+app.use(cors())
 
 app.use('/api', userRouter)
 
