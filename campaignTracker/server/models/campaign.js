@@ -20,8 +20,8 @@ const campaignSchema = mongoose.Schema({
     }],
     playerCharacters: [String],
     users: [String],
-    dungeonMaster: [String]
+    dungeonMaster: String
 })
 
-export const campaigns = mongoose.model('campaigns', campaignSchema)
-
+const campaigns = mongoose.model('campaigns', campaignSchema)
+export default campaigns;

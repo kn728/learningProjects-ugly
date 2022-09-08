@@ -48,7 +48,7 @@ function Form() {
 
                     <Button className='buttonSubmit' variant='contained' color='primary' size='large' type='submit' fullWidth>Submit</Button>
                     <Button  variant='contained' color='secondary' size='small' onClick={clear} fullWidth>Clear</Button>
-
+                    <Button onClick={()=>console.log(postData.selectedFile)}> check File</Button>
                 </div>
             </form>
         </Paper>
