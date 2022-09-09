@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-
+import bcrypt from 'bcrypt'
 const userSchema = mongoose.Schema({
     name: String,
     userName: {
@@ -17,6 +17,8 @@ const userSchema = mongoose.Schema({
     },
     campaigns:[String]
 })
+
+
 
 const userAccounts = mongoose.model('userAccounts', userSchema)
 export default userAccounts;

@@ -14,7 +14,7 @@ app.use(cors())
 
 app.use('/', myRoutes)
 
-const CONNECTION_URL = 'mongodb+srv://firstApp:123@cluster0.qxoia3n.mongodb.net/?retryWrites=true&w=majority'
+const CONNECTION_URL = 'mongodb+srv://noPrivateData:123@cluster0.5ioamdz.mongodb.net/?retryWrites=true&w=majority'
 
 const PORT = process.env.PORT || 5000;
 
