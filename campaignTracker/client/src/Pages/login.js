@@ -1,28 +1,16 @@
 import React from 'react'
 import {Card, Stack, TextField, Button} from '@mui/material'
 import { useSelector, useDispatch } from 'react-redux'
-import { loginUser } from '../redux/features/user'
+import { LogIn } from '../functions'
+import { useNavigate } from 'react-router'
 
 export default function Login() {
     const [userName, setUsername] = React.useState('')
     const [password, setPassword] = React.useState('')
-    
     const currUser = useSelector((state) => state.user)
-    const dispatch = useDispatch()
-
-    function LogIn() {
-        const user = {userName, password}
-         
-        fetch('http://localhost:5000/login', {
-            method: 'POST',
-            headers: {"Content-Type":"application/json"},
-            body: JSON.stringify(user)
-        }).then(res => res.json()).then(data => {
-            console.log(data)
-            dispatch(loginUser({id: data._id, name: data.name, userName: data.userName, email: data.email, campaigns: data.campaigns}))
-        })
-        
-    }
+    const dispatch = useDispatch()  
+    const nav = useNavigate()
+    
 
     return (
         <div className = 'page' style={{display: 'grid', placeItems:'center'}}>
@@ -38,7 +26,7 @@ export default function Login() {
                         <TextField label= 'password' type='password'  sx={{width:'70%'}} onChange={(e) => setPassword(e.target.value)}/>
                         <div style={{display: 'flex', justifyContent:'space-between', width:'70%'}}>
                             <Button sx={{color: 'red'}} onClick={() => console.log(currUser)}>Forgotten Password?</Button>   
-                            <Button variant='contained' sx={{backgroundColor: 'red'}} onClick={LogIn}>Sign In</Button>
+                            <Button variant='contained' sx={{backgroundColor: 'red'}} onClick={() => LogIn(userName, password, dispatch, nav)}>Sign In</Button>
                         </div>
                     </Stack>
                     

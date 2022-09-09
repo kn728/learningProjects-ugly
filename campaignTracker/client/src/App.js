@@ -3,7 +3,7 @@ import Navbar from './Components/Navbar';
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Login from './Pages/login';
 import Register from './Pages/register';
-
+import LandingPage from './Pages/LandingPage';
 import CampaignMap from './Pages/CampaignMap';
 import CreateCharacter from './Pages/createCharacter';
 import Home from './Pages/home';
@@ -16,6 +16,7 @@ function App() {
           <Route path="/CharacterCreator" element={<CreateCharacter />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
+          <Route path="/landing" element={<LandingPage />}></Route>
 
       </Routes>
       
