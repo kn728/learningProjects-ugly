@@ -48,3 +48,12 @@ export const deleteAll = async (req, res) => {
         res.json({message:' icant even delete write or use the right write, damn i did it again'})
     }
 }
+
+export const getUsers = async (req, res) => {
+    try {
+        const users = await userAccounts.find()
+        res.json(users)
+    } catch (error) {
+        res.json({message:err})
+    }
+}
