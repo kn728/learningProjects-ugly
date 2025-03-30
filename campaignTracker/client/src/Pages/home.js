@@ -4,5 +4,5 @@ export default function Home() {
 
     
 
-    return (<h1 style={{marginTop:'300px'}}>Large artwork will go here</h1>)
+    return (<h1 className='page'>Large artwork will go here</h1>)
 }

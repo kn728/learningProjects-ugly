@@ -1,6 +1,7 @@
 import './App.css';
 import Navbar from './Components/Navbar';
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Footer from './Components/Footer';
 import Login from './Pages/login';
 import Register from './Pages/register';
 import LandingPage from './Pages/LandingPage';
@@ -19,6 +20,7 @@ function App() {
           <Route path="/landing" element={<LandingPage />}></Route>
 
       </Routes>
+      <Footer />
       
       
     </Router>
